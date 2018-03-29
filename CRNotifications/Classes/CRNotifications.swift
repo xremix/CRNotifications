@@ -12,16 +12,12 @@ public class CRNotifications {
     
     public init(){}
     
-    /** Shows a CRNotification with a type, title, message, delay and completion callback */
-    public static func showNotification(type: CRNotificationType, title: String, message: String, dismissDelay: TimeInterval, completion: @escaping () -> () = {}) {
-        showNotification(type: type, title: title, message: message, dismissDelay: dismissDelay, backgroundColor: type.color, completion: completion)
-    }
     /** Shows a CRNotification with a type, title, message, delay, background color and completion callback */
-    public static func showNotification(type: CRNotificationType, title: String, message: String, dismissDelay: TimeInterval, backgroundColor: UIColor, completion: @escaping () -> () = {}) {
+    public static func showNotification(type: CRNotificationSetting, title: String, message: String, dismissDelay: TimeInterval, completion: @escaping () -> () = {}) {
         let view = CRNotification()
         
-        view.setBackgroundColor(color: backgroundColor)
-        view.setImage(image: type.image)
+        view.setBackgroundColor(color: type.color)
+        view.setImage(image: type.backgroundColor)
         view.setTitle(title: title)
         view.setMessage(message: message)
         view.setDismisTimer(delay: dismissDelay)
